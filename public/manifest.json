@@ -12,5 +12,8 @@
       "matches": ["<all_urls>"],
       "js": ["content-script.js"]
     }
-  ]
+  ],
+  "side_panel": {
+    "default_path": "side-panel.html"
+  }
 }
