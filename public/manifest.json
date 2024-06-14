@@ -1,0 +1,16 @@
+{
+  "name": "UnblockedNote: Simple and Clear Note",
+  "description": "A simple and straightforward Chrome extension that allows users to take and save notes without obstructing the browser screen using a side panel.",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "permissions": ["sidePanel"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"]
+    }
+  ]
+}
