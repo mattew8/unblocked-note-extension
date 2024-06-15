@@ -3,7 +3,7 @@ import { postService } from '../service/post/post-service';
 const EDITABLE_ELEMENT_ID = 'editable-div';
 const SidePanel = () => {
   const saveNotes = () => {
-    const editText = document.getElementById(EDITABLE_ELEMENT_ID)?.innerText;
+    const editText = document.getElementById(EDITABLE_ELEMENT_ID)?.innerHTML;
     if (typeof editText === 'string' && editText.length > 0) {
       postService.addPost(editText);
     }
@@ -11,7 +11,10 @@ const SidePanel = () => {
 
   const getNotes = async () => {
     const posts = await postService.getPosts();
-    console.log(posts);
+    const editerElement = document.getElementById(EDITABLE_ELEMENT_ID);
+    const lastPostContent = posts.at(-1)?.contents;
+    if (editerElement === null || lastPostContent === undefined) return;
+    editerElement.innerHTML = lastPostContent;
   };
 
   return (
