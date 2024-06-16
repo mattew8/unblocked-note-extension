@@ -1,8 +1,5 @@
+import { Message, MessageController } from '../../application/port';
 import { queryTabs } from '../../lib/chrome-extension/query-tabs';
-import {
-  Message,
-  MessageController,
-} from './interface/message-controller.interface';
 
 interface OpenSidePanelMessage extends Message {
   action: 'open-side-panel';
