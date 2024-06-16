@@ -24,4 +24,13 @@ export const postService: PostService = {
     if (posts === undefined) return null;
     return posts.find((post) => post.id === id) || null;
   },
+
+  async editPost(id, text) {
+    const prevPosts = ((await chromeStorage.get('posts')) || []) as Post[];
+    const updatedPosts = prevPosts.map((post) =>
+      post.id === id ? { ...post, contents: text } : post,
+    );
+
+    return chromeStorage.create('posts', updatedPosts);
+  },
 };
