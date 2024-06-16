@@ -10,7 +10,7 @@ const SidePanel = () => {
     <>
       {pathname === 'post/list' && <PostList />}
       {pathname === 'post/detail' && postId !== null && (
-        <PostDetail id={postId} />
+        <PostDetail id={Number(postId)} />
       )}
     </>
   );
