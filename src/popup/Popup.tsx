@@ -1,14 +1,19 @@
-import { openSidePanelController } from '../service/message-controller/open-side-panel';
-import { useExtensionRouter } from '../service/router/extension-router';
+import useStartExtensionInPopup from '../service/start-extension/start-extension-in-popup';
 
 const Popup = () => {
-  const router = useExtensionRouter();
+  const start = useStartExtensionInPopup();
 
-  const onClickOpen = async () => {
+  const onClickShowList = async () => {
     try {
-      router.push('post/list');
-      await openSidePanelController.send();
-      window.close();
+      await start('post-list');
+    } catch (e) {
+      alert(e || 'fail to load side-panel. please retry later.');
+    }
+  };
+
+  const onClickWriteMemo = async () => {
+    try {
+      await start('post-create');
     } catch (e) {
       alert(e || 'fail to load side-panel. please retry later.');
     }
@@ -17,7 +22,8 @@ const Popup = () => {
   return (
     <div style={{ width: 320, height: 210, textAlign: 'center' }}>
       <p>let's start unblocked note</p>
-      <button onClick={onClickOpen}>open</button>
+      <button onClick={onClickShowList}>show memos</button>
+      <button onClick={onClickWriteMemo}>write memo</button>
     </div>
   );
 };
