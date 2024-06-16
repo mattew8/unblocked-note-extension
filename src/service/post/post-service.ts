@@ -18,4 +18,10 @@ export const postService: PostService = {
 
     return chromeStorage.create('posts', (prevPosts || []).concat(post));
   },
+
+  async getPost(id) {
+    const posts = (await chromeStorage.get('posts')) as Post[] | undefined;
+    if (posts === undefined) return null;
+    return posts.find((post) => post.id === id) || null;
+  },
 };
