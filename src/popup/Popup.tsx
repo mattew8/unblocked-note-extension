@@ -1,8 +1,12 @@
 import { openSidePanelController } from '../service/message-controller/open-side-panel';
+import { useExtensionRouter } from '../service/router/extension-router';
 
 const Popup = () => {
+  const router = useExtensionRouter();
+
   const onClickOpen = async () => {
     try {
+      router.push('post/list');
       await openSidePanelController.send();
       window.close();
     } catch (e) {
