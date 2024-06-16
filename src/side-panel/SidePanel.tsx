@@ -1,36 +1,18 @@
-import { postService } from '../service/post/post-service';
+import { useExtensionRouter } from '../service/router/extension-router';
+import PostDetail from './post-detail/PostDetail';
+import PostList from './post-list/PostList';
 
-const EDITABLE_ELEMENT_ID = 'editable-div';
 const SidePanel = () => {
-  const saveNotes = () => {
-    const editText = document.getElementById(EDITABLE_ELEMENT_ID)?.innerHTML;
-    if (typeof editText === 'string' && editText.length > 0) {
-      postService.addPost(editText);
-    }
-  };
-
-  const getNotes = async () => {
-    const posts = await postService.getPosts();
-    const editerElement = document.getElementById(EDITABLE_ELEMENT_ID);
-    const lastPostContent = posts.at(-1)?.contents;
-    if (editerElement === null || lastPostContent === undefined) return;
-    editerElement.innerHTML = lastPostContent;
-  };
+  const { pathname, searchParams } = useExtensionRouter();
+  const postId = searchParams.id || null;
 
   return (
-    <div>
-      <div>
-        <h1>let's note!</h1>
-        <button onClick={saveNotes}>save</button>
-        <button onClick={getNotes}>get</button>
-      </div>
-
-      <div
-        style={{ height: '100vh', border: '1px solid red' }}
-        contentEditable
-        id={EDITABLE_ELEMENT_ID}
-      ></div>
-    </div>
+    <>
+      {pathname === 'post/list' && <PostList />}
+      {pathname === 'post/detail' && postId !== null && (
+        <PostDetail id={postId} />
+      )}
+    </>
   );
 };
 
