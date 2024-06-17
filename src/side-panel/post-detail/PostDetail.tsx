@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { postService } from '../../service/post/post-service';
 import { Post } from '../../domain/post';
+import { useExtensionRouter } from '../../service/router/extension-router';
 
 const EDITABLE_ELEMENT_ID = 'editable-div';
 
@@ -8,6 +9,7 @@ interface PostDetailProps {
   id: number;
 }
 const PostDetail = ({ id }: PostDetailProps) => {
+  const router = useExtensionRouter();
   const [post, setPost] = useState<Post | null>(null);
 
   useEffect(() => {
@@ -26,10 +28,15 @@ const PostDetail = ({ id }: PostDetailProps) => {
   const postContents = post?.contents;
   if (post === null || postContents === undefined) return null;
 
+  const onClickGoBackToList = () => {
+    router.push('post/list');
+  };
+
   return (
     <div>
       <div>
-        <h1>let's note!</h1>
+        <h1>{post.id}</h1>
+        <button onClick={onClickGoBackToList}>go back to list</button>
         <button onClick={saveNotes}>save</button>
       </div>
 

@@ -1,14 +1,17 @@
 import { postService } from '../../service/post/post-service';
+import { useExtensionRouter } from '../../service/router/extension-router';
 
 const EDITABLE_ELEMENT_ID = 'editable-div';
 
 const PostCreate = () => {
-  const saveNotes = () => {
+  const router = useExtensionRouter();
+  const saveNotes = async () => {
     const contents = document.querySelector(
       `.${EDITABLE_ELEMENT_ID}`,
     )?.innerHTML;
     if (typeof contents === 'string' && contents.length > 0) {
-      postService.addPost(contents);
+      const post = await postService.addPost(contents);
+      router.push(`post/detail?id=${post.id}`);
     }
   };
 

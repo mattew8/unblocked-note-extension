@@ -16,7 +16,10 @@ export const postService: PostService = {
     };
     const prevPosts = (await chromeStorage.get('posts')) as Post[] | undefined;
 
-    return chromeStorage.create('posts', (prevPosts || []).concat(post));
+    await chromeStorage.create('posts', (prevPosts || []).concat(post));
+    const createdPost = await this.getPost(post.id);
+    if (createdPost === null) throw new Error('fail to save post');
+    return createdPost;
   },
 
   async getPost(id) {
