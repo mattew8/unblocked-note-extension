@@ -3,7 +3,7 @@ import { Post } from '../domain/post';
 export interface PostService {
   getPosts(): Promise<Post[]>;
   getPost(id: Post['id']): Promise<Post | null>;
-  addPost(text: string): Promise<void>;
+  addPost(text: string): Promise<Post>;
   editPost(id: Post['id'], text: string): Promise<void>;
 }
 
