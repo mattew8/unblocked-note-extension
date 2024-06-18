@@ -1,11 +1,13 @@
-import useStartExtensionInPopup from '../service/start-extension/start-extension-in-popup';
+import { openSidePanelController } from '../service/message-controller/open-side-panel';
+import useRoutePost from '../service/post/route-post';
 
 const Popup = () => {
-  const start = useStartExtensionInPopup();
+  const { routeToList, routeToCreate } = useRoutePost(openSidePanelController);
 
   const onClickShowList = async () => {
     try {
-      await start('post-list');
+      await routeToList();
+      window.close();
     } catch (e) {
       alert(e || 'fail to load side-panel. please retry later.');
     }
@@ -13,7 +15,8 @@ const Popup = () => {
 
   const onClickWriteMemo = async () => {
     try {
-      await start('post-create');
+      await routeToCreate();
+      window.close();
     } catch (e) {
       alert(e || 'fail to load side-panel. please retry later.');
     }
