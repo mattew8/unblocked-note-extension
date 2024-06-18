@@ -21,6 +21,6 @@ export interface Message {
 export interface MessageController<T extends Message> {
   message: T;
 
-  send(): Promise<unknown>;
+  send(): Promise<void>;
   on(callback: (message: T) => void): void;
 }
