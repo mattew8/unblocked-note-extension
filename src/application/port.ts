@@ -5,6 +5,7 @@ export interface PostService {
   getPost(id: Post['id']): Promise<Post | null>;
   addPost(text: string): Promise<Post>;
   editPost(id: Post['id'], text: string): Promise<void>;
+  deletePost(id: Post['id']): Promise<void>;
 }
 
 export interface Router {

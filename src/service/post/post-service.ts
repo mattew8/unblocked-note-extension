@@ -36,4 +36,11 @@ export const postService: PostService = {
 
     return chromeStorage.create('posts', updatedPosts);
   },
+
+  async deletePost(id) {
+    const prevPosts = ((await chromeStorage.get('posts')) || []) as Post[];
+    const updatedPosts = prevPosts.filter((post) => post.id !== id);
+
+    return chromeStorage.create('posts', updatedPosts);
+  },
 };

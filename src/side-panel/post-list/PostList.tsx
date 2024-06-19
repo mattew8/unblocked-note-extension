@@ -17,9 +17,13 @@ const PostList = () => {
     router.push(`post/detail?id=${id}`);
   };
 
+  const onClickCreateNote = () => {
+    router.push(`post/create`);
+  };
+
   return (
     <div>
-      포포
+      <button onClick={onClickCreateNote}>write your notes!</button>
       {posts.map((post) => (
         <div key={post.id}>
           <p>{post.id}</p>
