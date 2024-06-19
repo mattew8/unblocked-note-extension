@@ -16,12 +16,13 @@ const PostDetail = ({ id }: PostDetailProps) => {
     postService.getPost(id).then(setPost);
   }, [id]);
 
-  const saveNotes = () => {
+  const saveNotes = async () => {
     const editText = document.querySelector(
       `.${EDITABLE_ELEMENT_ID}`,
     )?.innerHTML;
     if (typeof editText === 'string' && editText.length > 0) {
-      postService.editPost(id, editText);
+      await postService.editPost(id, editText);
+      router.push('post/list');
     }
   };
 
