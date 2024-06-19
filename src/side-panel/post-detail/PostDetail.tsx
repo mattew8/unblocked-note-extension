@@ -26,27 +26,34 @@ const PostDetail = ({ id }: PostDetailProps) => {
     }
   };
 
-  const postContents = post?.contents;
-  if (post === null || postContents === undefined) return null;
-
   const onClickGoBackToList = () => {
     router.push('post/list');
   };
 
+  const onClickDelete = async () => {
+    await postService.deletePost(id);
+    router.push('post/list');
+  };
+
+  const postContents = post?.contents;
+
   return (
     <div>
       <div>
-        <h1>{post.id}</h1>
+        {post !== null && <h1>{post.id}</h1>}
         <button onClick={onClickGoBackToList}>go back to list</button>
+        <button onClick={onClickDelete}>delete</button>
         <button onClick={saveNotes}>save</button>
       </div>
 
-      <div
-        className={EDITABLE_ELEMENT_ID}
-        style={{ height: '100vh', border: '1px solid red' }}
-        contentEditable
-        dangerouslySetInnerHTML={{ __html: postContents }} // set initial contentEditable content
-      ></div>
+      {postContents !== undefined && (
+        <div
+          className={EDITABLE_ELEMENT_ID}
+          style={{ height: '100vh', border: '1px solid red' }}
+          contentEditable
+          dangerouslySetInnerHTML={{ __html: postContents }} // set initial contentEditable content
+        />
+      )}
     </div>
   );
 };
