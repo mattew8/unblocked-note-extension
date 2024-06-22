@@ -1,5 +1,5 @@
-import { postService } from '../../service/post/post-service';
-import { useExtensionRouter } from '../../service/router/extension-router';
+import { postService } from '../../../service/post/post-service';
+import { useExtensionRouter } from '../../../service/router/extension-router';
 
 const EDITABLE_ELEMENT_ID = 'editable-div';
 

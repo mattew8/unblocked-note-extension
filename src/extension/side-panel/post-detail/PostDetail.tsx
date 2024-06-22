@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { postService } from '../../service/post/post-service';
-import { Post } from '../../domain/post';
-import { useExtensionRouter } from '../../service/router/extension-router';
+import { postService } from '../../../service/post/post-service';
+import { Post } from '../../../domain/post';
+import { useExtensionRouter } from '../../../service/router/extension-router';
 
 const EDITABLE_ELEMENT_ID = 'editable-div';
 

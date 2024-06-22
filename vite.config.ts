@@ -7,9 +7,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        popup: resolve(__dirname, 'src/popup/main.tsx'),
-        'content-script': resolve(__dirname, 'src/content-script/main.tsx'),
-        'side-panel': resolve(__dirname, 'src/side-panel/main.tsx'),
+        popup: resolve(__dirname, 'src/extension/popup/main.tsx'),
+        'content-script': resolve(
+          __dirname,
+          'src/extension/content-script/main.tsx',
+        ),
+        'side-panel': resolve(__dirname, 'src/extension/side-panel/main.tsx'),
       },
       output: {
         entryFileNames: '[name].js',
