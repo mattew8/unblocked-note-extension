@@ -1,5 +1,5 @@
-import { openSidePanelController } from '../service/message-controller/open-side-panel';
-import useRoutePost from '../service/post/route-post';
+import { openSidePanelController } from '../../service/message-controller/open-side-panel';
+import useRoutePost from '../../service/post/route-post';
 
 const Popup = () => {
   const { routeToList, routeToCreate } = useRoutePost(openSidePanelController);

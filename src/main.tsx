@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import SidePanel from './side-panel/SidePanel';
-import ContentScript from './content-script/ContentScript';
-import Popup from './popup/Popup';
+import SidePanel from './extension/side-panel/SidePanel';
+import ContentScript from './extension/content-script/ContentScript';
+import Popup from './extension/popup/Popup';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
