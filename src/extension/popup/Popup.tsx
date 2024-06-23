@@ -25,7 +25,9 @@ const Popup = () => {
   return (
     <div style={{ width: 320, height: 210, textAlign: 'center' }}>
       <p>let's start unblocked note</p>
-      <button onClick={onClickShowList}>show memos</button>
+      <button className="bg-red-700" onClick={onClickShowList}>
+        show memos
+      </button>
       <button onClick={onClickWriteMemo}>write memo</button>
     </div>
   );
