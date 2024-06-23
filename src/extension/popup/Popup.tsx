@@ -1,5 +1,6 @@
 import { openSidePanelController } from '../../service/message-controller/open-side-panel';
 import useRoutePost from '../../service/post/route-post';
+import { Button } from '../components/ui/button';
 
 const Popup = () => {
   const { routeToList, routeToCreate } = useRoutePost(openSidePanelController);
@@ -23,12 +24,13 @@ const Popup = () => {
   };
 
   return (
-    <div style={{ width: 320, height: 210, textAlign: 'center' }}>
-      <p>let's start unblocked note</p>
-      <button className="bg-red-700" onClick={onClickShowList}>
+    <div className="flex flex-col items-center w-56 gap-3 p-3">
+      <Button onClick={onClickShowList} className="w-48">
         show memos
-      </button>
-      <button onClick={onClickWriteMemo}>write memo</button>
+      </Button>
+      <Button onClick={onClickWriteMemo} variant={'secondary'} className="w-48">
+        write memo
+      </Button>
     </div>
   );
 };
