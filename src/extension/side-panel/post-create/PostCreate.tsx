@@ -1,3 +1,4 @@
+import { Button } from '@/extension/components/ui/button';
 import { postService } from '../../../service/post/post-service';
 import { useExtensionRouter } from '../../../service/router/extension-router';
 
@@ -15,18 +16,24 @@ const PostCreate = () => {
     }
   };
 
+  const goBackToPostList = () => {
+    router.push('post/list');
+  };
+
   return (
     <div>
-      <div>
-        <h1>let's note!</h1>
-        <button onClick={saveNotes}>save</button>
+      <div className="flex justify-between">
+        <Button onClick={goBackToPostList} variant={'secondary'}>
+          goBack
+        </Button>
+        <Button onClick={saveNotes}>save</Button>
       </div>
 
       <div
-        className={EDITABLE_ELEMENT_ID}
-        style={{ height: '100vh', border: '1px solid red' }}
+        className={`${EDITABLE_ELEMENT_ID} min-h-96 font-sans text-lg p-3 mt-2`}
         contentEditable
-      ></div>
+        dangerouslySetInnerHTML={{ __html: 'write anything you want!' }} // set initial contentEditable content
+      />
     </div>
   );
 };

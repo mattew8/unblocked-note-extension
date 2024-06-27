@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { postService } from '../../../service/post/post-service';
 import { Post } from '../../../domain/post';
 import { useExtensionRouter } from '../../../service/router/extension-router';
+import { ChevronLeft, Save, Trash2 } from 'lucide-react';
+import { Button } from '@/extension/components/ui/button';
 
 const EDITABLE_ELEMENT_ID = 'editable-div';
 
@@ -39,17 +41,23 @@ const PostDetail = ({ id }: PostDetailProps) => {
 
   return (
     <div>
-      <div>
-        {post !== null && <h1>{post.id}</h1>}
-        <button onClick={onClickGoBackToList}>go back to list</button>
-        <button onClick={onClickDelete}>delete</button>
-        <button onClick={saveNotes}>save</button>
+      <div className="flex justify-between">
+        <Button onClick={onClickGoBackToList} variant="outline" size="icon">
+          <ChevronLeft className="w-4 h-4" />
+        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="icon">
+            <Trash2 onClick={onClickDelete} className="w-4 h-4" />
+          </Button>
+          <Button onClick={saveNotes} size="icon">
+            <Save className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
 
       {postContents !== undefined && (
         <div
-          className={EDITABLE_ELEMENT_ID}
-          style={{ height: '100vh', border: '1px solid red' }}
+          className={`${EDITABLE_ELEMENT_ID} min-h-96 font-sans text-lg p-3 mt-2`}
           contentEditable
           dangerouslySetInnerHTML={{ __html: postContents }} // set initial contentEditable content
         />
