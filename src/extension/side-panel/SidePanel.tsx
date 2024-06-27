@@ -8,13 +8,13 @@ const SidePanel = () => {
   const postId = searchParams.id || null;
 
   return (
-    <>
+    <div className="p-2">
       {pathname === 'post/list' && <PostList />}
       {pathname === 'post/create' && <PostCreate />}
       {pathname === 'post/detail' && postId !== null && (
         <PostDetail id={Number(postId)} />
       )}
-    </>
+    </div>
   );
 };
 

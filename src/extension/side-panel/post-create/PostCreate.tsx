@@ -23,20 +23,14 @@ const PostCreate = () => {
   return (
     <div>
       <div className="flex justify-between">
-        <Button
-          onClick={goBackToPostList}
-          variant={'secondary'}
-          className="w-24"
-        >
+        <Button onClick={goBackToPostList} variant={'secondary'}>
           goBack
         </Button>
-        <Button onClick={saveNotes} className="w-24">
-          save
-        </Button>
+        <Button onClick={saveNotes}>save</Button>
       </div>
 
       <div
-        className={`${EDITABLE_ELEMENT_ID} min-h-96 font-sans text-lg p-3`}
+        className={`${EDITABLE_ELEMENT_ID} min-h-96 font-sans text-lg p-3 mt-2`}
         contentEditable
         dangerouslySetInnerHTML={{ __html: 'write anything you want!' }} // set initial contentEditable content
       />
