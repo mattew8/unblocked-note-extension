@@ -49,7 +49,7 @@ const PostDetail = ({ id }: PostDetailProps) => {
       {postContents !== undefined && (
         <div
           className={EDITABLE_ELEMENT_ID}
-          style={{ height: '100vh', border: '1px solid red' }}
+          style={{ height: '100vh' }}
           contentEditable
           dangerouslySetInnerHTML={{ __html: postContents }} // set initial contentEditable content
         />

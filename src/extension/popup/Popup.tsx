@@ -25,11 +25,12 @@ const Popup = () => {
 
   return (
     <div className="flex flex-col items-center w-56 gap-3 p-3">
-      <Button onClick={onClickShowList} className="w-48">
-        show memos
+      <Button onClick={onClickWriteMemo} className="w-48">
+        write a new note
       </Button>
-      <Button onClick={onClickWriteMemo} variant={'secondary'} className="w-48">
-        write memo
+
+      <Button onClick={onClickShowList} variant={'secondary'} className="w-48">
+        show notes
       </Button>
     </div>
   );
